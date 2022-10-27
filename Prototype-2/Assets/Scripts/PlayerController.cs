@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
   public float speed;
   public float xBound;
+  public GameObject foodPrefab;
 
 
   // Start is called before the first frame update
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
   // Update is called once per frame
   void Update()
   {
+    // Move player.
     var xInput = Input.GetAxis("Horizontal");
     transform.Translate(Vector3.right * xInput * speed * Time.deltaTime);
 
@@ -33,6 +35,12 @@ public class PlayerController : MonoBehaviour
       // Too far to the right...
       t.x = xBound;
       transform.position = t;
+    }
+
+    // Launch food when spacebar is pressed.
+    if (Input.GetKeyDown(KeyCode.Space))
+    {
+      Instantiate(foodPrefab, transform.position, foodPrefab.transform.rotation);
     }
   }
 }
