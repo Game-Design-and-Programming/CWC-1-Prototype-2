@@ -494,6 +494,8 @@ MonoBehaviour:
   - {fileID: 5374688746632300954, guid: 322894ef6bdf84afab49b5b58bd06c6d, type: 3}
   - {fileID: 498612026428769212, guid: 3292d172baf5841928eae68bd27d6b9d, type: 3}
   - {fileID: 1428636595993057790, guid: 2fa3219e2c3c44fe7ab29d2d7562273b, type: 3}
+  startDelay: 2
+  spawnInterval: 1.5
 --- !u!4 &701908015
 Transform:
   m_ObjectHideFlags: 0
