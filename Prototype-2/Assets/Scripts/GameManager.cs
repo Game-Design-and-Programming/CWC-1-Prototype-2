@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,15 +17,15 @@ public class GameManager : MonoBehaviour
     
     set {
       _lives = value;
+      livesText.text = $"Lives: {_lives}";
+
       if (_lives <= 0)
       {
         // XXX <0 ?
-        baseSpeed = 0;
-        Debug.Log($"Game over!");
-      }
-      else
-      {
-        Debug.Log($"Lives: {_lives}");
+        StopGame();
+        instructionsText.text = $"Game over!";
+        instructionsText.enabled = true;
+        startButton.gameObject.SetActive(true);
       }
     }
   }
@@ -32,7 +34,10 @@ public class GameManager : MonoBehaviour
   public int score
   {
     get { return _score; }
-    set { _score = value; }
+    set {
+          _score = value;
+          scoreText.text = $"Score: {_score}";
+        }
   }
 
   // The base speed for all moving game objects. Set to 0 to freeze game.
@@ -52,7 +57,7 @@ public class GameManager : MonoBehaviour
     set { _xBound = value; }
   }
 
-  // Start is called before the first frame update
+  // Awake is called when the object becomes active in the game
   void Awake()
   {
     if (instance != null && instance != this)
@@ -65,10 +70,34 @@ public class GameManager : MonoBehaviour
       // Set instance on first call.
       instance = this;
       ResetGame();
+      StopGame();
     }
   }
 
-  // Update is called once per frame
+  // UI
+  public Button startButton;
+  public TMP_Text instructionsText;
+  public TMP_Text livesText;
+  public TMP_Text scoreText;
+
+  public void StartButtonOnClick()
+  {
+    //Debug.Log($"Start button clicked");
+    instructionsText.enabled = false;
+    startButton.gameObject.SetActive(false);
+    StartGame();
+  }
+
+  // Game management helpers
+  void StartGame()
+  {
+    ResetGame();
+  }
+
+  void StopGame()
+  {
+    baseSpeed = 0;
+  }
   void ResetGame()
   {
     lives = 3;

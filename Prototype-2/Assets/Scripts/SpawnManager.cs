@@ -28,8 +28,8 @@ public class SpawnManager : MonoBehaviour
   void SpawnRandomAnimal()
   {
     // Check that we're still alive
-    if (GameManager.instance.lives <= 0) { return; }
-    
+    if (GameManager.instance.lives <= 0 || GameManager.instance.baseSpeed ==0) { return; }
+
     // Generate spawn position with random location on X-axis.
     var spawnPos = new Vector3(
       Random.Range(-spawnRangeX, spawnRangeX),
