@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-  public float speed;
+  public float speedScale;
   private float xBound;
   public GameObject foodPrefab;
 
@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
   // Start is called before the first frame update
   void Start()
   {
-    xBound = GameManager.xBound;
+    xBound = GameManager.instance.xBound;
   }
 
   // Update is called once per frame
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
   {
     // Move player.
     var xInput = Input.GetAxis("Horizontal");
-    transform.Translate(Vector3.right * xInput * speed * Time.deltaTime);
+    transform.Translate(Vector3.right * xInput * Speed());
 
     // Ensure that we stay in bounds.
     var t = transform.position;
@@ -38,9 +38,14 @@ public class PlayerController : MonoBehaviour
     }
 
     // Launch food when spacebar is pressed.
-    if (Input.GetKeyDown(KeyCode.Space))
+    if (Input.GetKeyDown(KeyCode.Space) && GameManager.instance.lives > 0)
     {
       Instantiate(foodPrefab, transform.position, foodPrefab.transform.rotation);
     }
+  }
+
+  float Speed()
+  {
+    return GameManager.instance.baseSpeed * speedScale * Time.deltaTime;
   }
 }

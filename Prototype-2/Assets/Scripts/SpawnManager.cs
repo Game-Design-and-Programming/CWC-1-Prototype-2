@@ -10,11 +10,12 @@ public class SpawnManager : MonoBehaviour
   public float startDelay;
   public float spawnInterval;
 
-  private float spawnRangeX = GameManager.xBound;
+  private float spawnRangeX;
 
   // Start is called before the first frame update
   void Start()
   {
+    spawnRangeX = GameManager.instance.xBound;
     InvokeRepeating("SpawnRandomAnimal", startDelay, spawnInterval);
   }
 
@@ -26,6 +27,9 @@ public class SpawnManager : MonoBehaviour
 
   void SpawnRandomAnimal()
   {
+    // Check that we're still alive
+    if (GameManager.instance.lives <= 0) { return; }
+    
     // Generate spawn position with random location on X-axis.
     var spawnPos = new Vector3(
       Random.Range(-spawnRangeX, spawnRangeX),

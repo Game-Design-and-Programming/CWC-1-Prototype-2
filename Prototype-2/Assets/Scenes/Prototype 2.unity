@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.44657946, g: 0.49641383, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657958, g: 0.49641377, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -634,6 +634,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 419d7f752164d46c69f7408e93b85218, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _lives: 0
+  _score: 0
+  _baseSpeed: 12
+  _xBound: 0
 --- !u!4 &1159663575
 Transform:
   m_ObjectHideFlags: 0
@@ -665,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b562a3890324673bf72f69274c0fe9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 40
+  speedScale: 2
   foodPrefab: {fileID: 7133358818495744881, guid: 08dc82d7170494caabad3b7198edbab9, type: 3}
 --- !u!1 &1590138454
 GameObject:
