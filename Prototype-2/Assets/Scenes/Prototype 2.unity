@@ -1042,6 +1042,8 @@ MonoBehaviour:
   _xBound: 0
   startButton: {fileID: 1502379951}
   instructionsText: {fileID: 1504674924}
+  livesText: {fileID: 403480948}
+  scoreText: {fileID: 55909275}
 --- !u!4 &1159663575
 Transform:
   m_ObjectHideFlags: 0
