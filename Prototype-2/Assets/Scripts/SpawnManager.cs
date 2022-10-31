@@ -5,11 +5,12 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
   public GameObject[] animalPrefabs;
+
+  public float spawnPosZ;
   public float startDelay;
   public float spawnInterval;
 
-  private float spawnRangeX = 20; // XXX get xBound from PlayerController.
-  private float spawnPosZ = 20;
+  private float spawnRangeX = GameManager.xBound;
 
   // Start is called before the first frame update
   void Start()

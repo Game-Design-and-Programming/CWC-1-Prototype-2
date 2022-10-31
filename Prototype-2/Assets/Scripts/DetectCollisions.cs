@@ -21,5 +21,6 @@ public class DetectCollisions : MonoBehaviour
       // Debug.Log($"{gameObject.name} collided with {other.gameObject.name}");
       Destroy(other.gameObject);
       Destroy(gameObject);
+      Debug.Log($"Score: {++GameManager.score}");
     }
 }

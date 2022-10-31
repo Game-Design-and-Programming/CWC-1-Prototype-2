@@ -5,14 +5,14 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
   public float speed;
-  public float xBound;
+  private float xBound;
   public GameObject foodPrefab;
 
 
   // Start is called before the first frame update
   void Start()
   {
-      
+    xBound = GameManager.xBound;
   }
 
   // Update is called once per frame
